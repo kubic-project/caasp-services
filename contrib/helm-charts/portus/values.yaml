@@ -110,6 +110,7 @@ registry:
     enabled: false
     accessMode: "ReadWriteOnce"
     size: "10Gi"
+    # storageClass: '-'
 
   ## image configuration.
   # #
