@@ -59,10 +59,6 @@ portus:
     gravatar: true  # If enabled, then the profile picture will be picked from the Gravatar
     delete: true  # Allow admins and owners to delete images and tags
     oauth:
-      # If enabled, then users can login with portus credential.
-      # Otherwise, the users can only login via OAuth.
-      local_login:
-        enabled: true
       # If enabled, users can authenticate with their Google Account.
       # Callback url: <host>/users/auth/google_oauth2/callback
       google_oauth2:
@@ -171,7 +167,7 @@ nginx:
   ## Service configuration.
   ##
   service:
-    ## Set to ClusterIP if using ingress, or NodePort if using minikube 
+    ## Set to ClusterIP if using ingress, or NodePort if using minikube
     ##
     type: "ClusterIP"
 
