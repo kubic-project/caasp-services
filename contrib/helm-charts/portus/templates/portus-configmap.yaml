@@ -101,6 +101,11 @@ data:
     # OAuth support.
     {{- if .Values.portus.config.oauth }}{{ with .Values.portus.config.oauth }}
     oauth:
+      # If enabled, then users can login with portus credential.
+      # Otherwise, the users can only login via OAuth.
+      local_login:
+{{ toYaml .local_login | indent 8 }}
+
       # If enabled, users can authenticate with their Google Account.
       # Callback url: <host>/users/auth/google_oauth2/callback
       google_oauth2:
