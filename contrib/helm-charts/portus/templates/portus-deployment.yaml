@@ -36,7 +36,7 @@ spec:
               {{- end }}
               path: /api/v1/_ping
               port: {{ .Values.portus.service.port }}
-            initialDelaySeconds: 60
+            initialDelaySeconds: 240
             timeoutSeconds: 10
           env:
             - name: PORTUS_MACHINE_FQDN_VALUE
