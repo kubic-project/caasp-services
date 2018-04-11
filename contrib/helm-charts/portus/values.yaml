@@ -58,6 +58,27 @@ portus:
         domain: "example.com"
     gravatar: true  # If enabled, then the profile picture will be picked from the Gravatar
     delete: true  # Allow admins and owners to delete images and tags
+    oauth:
+      # If enabled, users can authenticate with their Google Account.
+      # Callback url: <host>/users/auth/google_oauth2/callback
+      google_oauth2:
+        enabled: false
+      # OpenID authentication support. If enabled, then users can authenticate with OpenID/Connect
+      # Callback url: <host>/users/auth/open_id/callback
+      open_id:
+        enabled: false
+      # Github authentication support.
+      # Callback url: <host>/users/auth/github/callback
+      github:
+        enabled: false
+      # Gitlab authentication support.
+      # Callback url: <host>/users/auth/gitlab/callback
+      gitlab:
+        enabled: false
+      # Bitbucket authentication support. Need permission to read email.
+      # Callback url: <host>/users/auth/bitbucket/callback
+      bitbucket:
+        enabled: false
     first_user_admin: true # First user signing up will be admin
     signup: true  # If enabled, then users can signup with the signup form
     display_name: false  # Allow users to have different display names on the web site
@@ -146,7 +167,7 @@ nginx:
   ## Service configuration.
   ##
   service:
-    ## Set to ClusterIP if using ingress, or NodePort if using minikube 
+    ## Set to ClusterIP if using ingress, or NodePort if using minikube
     ##
     type: "ClusterIP"
 
