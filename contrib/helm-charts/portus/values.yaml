@@ -157,7 +157,7 @@ portus:
       # Callback url: <host>/users/auth/gitlab/callback
       gitlab:
         enabled: false
-        applicationId:
+        application_id:
         secret:
         group:
         domain:

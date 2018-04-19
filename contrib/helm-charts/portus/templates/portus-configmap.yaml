@@ -143,7 +143,7 @@ data:
       # Callback url: <host>/users/auth/gitlab/callback
       gitlab:
         enabled: {{ .Values.portus.config.oauth.gitlab.enabled }}
-        application_id: {{ .Values.portus.config.oauth.gitlab.applicationId | quote }}
+        application_id: {{ .Values.portus.config.oauth.gitlab.application_id | quote }}
         secret: {{ .Values.portus.config.oauth.gitlab.secret | quote }}
         # Only member of the group can sign in/up with Gitlab.
         group: {{ .Values.portus.config.oauth.gitlab.group | quote }}
