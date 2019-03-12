@@ -256,38 +256,39 @@ nginx:
     ##
     type: "ClusterIP"
 
-    port:
+    port: 80
     # nodePort:
 
     ## Annotation to be added to the service
     ##
     annotations:
-    #   kubernetes.io/ingress.class: "nginx"
+      kubernetes.io/ingress.class: "nginx"
 
   ## in order to access the docker registry from outside of the cluster
   ## if ingress is enabled set host to the domain you are using
   ## if NodePort is being used set host to the ip address of a cluster node
   ##
-  # host:
+  host: registry.10.22.12.3.nip.io
 
   ## ingress configuration.
   ##
   ingress:
-    enabled: false
+    enabled: "true"
 
     ## Anntations to be added to the web ingress
     ##
-    # annotations:
-    #   kubernetes.io/ingress.class: "nginx"
-    #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    #   kubernetes.io/ingress.allow-http: "false"
-    #   ingress.kubernetes.io/ssl-passthrough: "true"
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+#      kubernetes.io/ingress.allow-http: "true"
+#      ingress.kubernetes.io/ssl-passthrough: "true"
+#      nginx.ingress.kubernetes.io/secure-backends: "true"
 
     ## TLS configuration
     ## the ingress host must be covered by the key/cert in order for TLS to work properly
     ##
-    # tls:
-    #   enabled: false
+    tls:
+      enabled: false
 
       ## Secrets containing SSL key and cert must be manually created in the namespace
       ##

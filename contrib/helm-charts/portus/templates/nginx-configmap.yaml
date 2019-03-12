@@ -42,7 +42,7 @@ data:
         '' 'registry/2.0';
       }
 
-      upstream {{ template "portus.fullname" . }} {
+      upstream {{ template "portus.fullname" . }}:{{ .Values.portus.service.port }} {
         least_conn;
         server {{ template "portus.fullname" . }}:{{ .Values.portus.service.port }} max_fails=3 fail_timeout=15s;
       }
@@ -87,7 +87,7 @@ data:
         # http://blog.ivanristic.com/2013/08/configuring-apache-nginx-and-openssl-for-forward-secrecy.html
         ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
         {{- else }}
-        listen {{ .Values.nginx.service.port }} http2;
+        listen {{ .Values.nginx.service.port }} ;
         {{- end }}
 
         ##
@@ -162,9 +162,9 @@ data:
         # Portus needs to handle /v2/token for authentication
         location = /v2/token {
           {{- if .Values.portus.tls.enabled }}
-          proxy_pass https://{{ template "portus.fullname" . }};
+          proxy_pass https://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- else }}
-          proxy_pass http://{{ template "portus.fullname" . }};
+          proxy_pass http://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- end }}
 
           proxy_set_header Host $http_host;   # required for docker client's sake
@@ -178,9 +178,9 @@ data:
         # Portus needs to handle /v2/webhooks/events for notifications
         location = /v2/webhooks/events {
           {{- if .Values.portus.tls.enabled }}
-          proxy_pass https://{{ template "portus.fullname" . }};
+          proxy_pass https://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- else }}
-          proxy_pass http://{{ template "portus.fullname" . }};
+          proxy_pass http://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- end }}
 
           proxy_set_header Host $http_host;   # required for docker client's sake
@@ -198,9 +198,9 @@ data:
 
         location @{{ template "portus.fullname" . }} {
           {{- if .Values.portus.tls.enabled }}
-          proxy_pass https://{{ template "portus.fullname" . }};
+          proxy_pass https://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- else }}
-          proxy_pass http://{{ template "portus.fullname" . }};
+          proxy_pass http://{{ template "portus.fullname" . }}:{{ .Values.portus.service.port }};
           {{- end }}
 
           proxy_set_header Host $http_host;   # required for docker client's sake
