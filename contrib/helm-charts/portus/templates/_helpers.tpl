@@ -26,6 +26,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s-%s-%s" .Release.Name $name "nginx" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "mariadb.fullname" -}}
+# use db instead of mariadb to avoid collision with mariadb's Chart definition
+{{- define "db.fullname" -}}
 {{- printf "%s-%s" .Release.Name "mariadb" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}

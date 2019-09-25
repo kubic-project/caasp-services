@@ -47,11 +47,11 @@ spec:
               value: {{ .Values.portus.dbAdapter }}
             {{- if .Values.mariadb.enabled }}
             - name: PORTUS_DB_HOST
-              value: {{ template "mariadb.fullname" . }}
+              value: {{ template "db.fullname" . }}
             - name: PORTUS_DB_DATABASE
-              value: {{ .Values.mariadb.mariadbDatabase | quote }}
+              value: {{ .Values.mariadb.db.name | quote }}
             - name: PORTUS_DB_USERNAME
-              value: {{ .Values.mariadb.mariadbUser | quote }}
+              value: {{ .Values.mariadb.db.user | quote }}
             {{- if .Values.portus.config.ldap.authentication.enabled }}
             - name: PORTUS_LDAP_AUTHENTICATION_PASSWORD
               valueFrom:
@@ -62,7 +62,7 @@ spec:
             - name: PORTUS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ template "mariadb.fullname" . }}
+                  name: {{ template "db.fullname" . }}
                   key: mariadb-password
             {{- else }}
             - name: PORTUS_DB_HOST
@@ -127,15 +127,15 @@ spec:
               value: {{ .Values.portus.dbAdapter | quote }}
             {{- if .Values.mariadb.enabled }}
             - name: PORTUS_DB_HOST
-              value: {{ template "mariadb.fullname" . }}
+              value: {{ template "db.fullname" . }}
             - name: PORTUS_DB_DATABASE
-              value: {{ .Values.mariadb.mariadbDatabase | quote }}
+              value: {{ .Values.mariadb.db.name | quote }}
             - name: PORTUS_DB_USERNAME
-              value: {{ .Values.mariadb.mariadbUser | quote }}
+              value: {{ .Values.mariadb.db.user | quote }}
             - name: PORTUS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ template "mariadb.fullname" . }}
+                  name: {{ template "db.fullname" . }}
                   key: mariadb-password
             {{- else }}
             - name: PORTUS_LOG_LEVEL

@@ -145,8 +145,8 @@ The following tables lists the configurable parameters of the portus chart and t
 | `mariadb.persistence.enabled`                     | Mariadb use persistent storage             | `false`                                         |
 | `mariadb.persistence.accessMode`                  | Mariadb persistence access mode            | `ReadWriteOnce`                                 |
 | `mariadb.persistence.size`                        | Mariadb persistence capacity               | `8Gi`                                           |
-| `mariadb.mariadbUser`                             | Mariadb user account name                  | `portus`                                        |
-| `mariadb.mariadbDatabase`                         | Mariadb database name                      | `portus`                                        |
+| `mariadb.db.user`                                 | Mariadb user account name                  | `portus`                                        |
+| `mariadb.db.name`                                 | Mariadb database name                      | `portus`                                        |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 

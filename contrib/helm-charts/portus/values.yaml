@@ -314,16 +314,32 @@ mariadb:
   ##
   enabled: true
 
-  ## persistence configuration.
-  ##
-  persistence:
-    enabled: false
-    # storageClass: "-"
-    accessMode: "ReadWriteOnce"
-    size: "8Gi"
-
   ## Configuration values for Mariadb.
   ## must match Portus database values.
   ##
-  mariadbUser: "portus"
-  mariadbDatabase: "portus"
+  db:
+    user: portus
+    name: portus
+
+  replication:
+    enabled: false # Development
+
+  master:
+    ## persistence configuration.
+    ##
+    persistence:
+      enabled: false
+      # storageClass: "-"
+      accessMode: "ReadWriteOnce"
+      size: "8Gi"
+    nodeSelector: {}
+
+  slave:
+    ## persistence configuration.
+    ##
+    persistence:
+      enabled: false
+      # storageClass: "-"
+      accessMode: "ReadWriteOnce"
+      size: "8Gi"
+    nodeselector: {}
