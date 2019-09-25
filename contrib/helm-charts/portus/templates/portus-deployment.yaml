@@ -172,6 +172,8 @@ spec:
           volumeMounts:
             - name: secrets
               mountPath: /secrets
+            - name: certificates
+              mountPath: /certificates
       volumes:
         {{- if .Values.portus.tls.enabled }}
         - name: secrets
