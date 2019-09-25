@@ -41,11 +41,11 @@ spec:
         {{- if .Values.portus.tls.enabled }}
         - name: certvol
           secret:
-            secretName: {{ template "portus.fullname" . }}
+            secretName: {{ .Values.portus.tls.secretName }}
             items:
-            - key: key
+            - key: tls.key
               path: portus.key
-            - key: cert
+            - key: tls.crt
               path: portus.crt
         {{- end }}
         - name: conf

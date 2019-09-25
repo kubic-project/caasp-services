@@ -176,15 +176,15 @@ spec:
         {{- if .Values.portus.tls.enabled }}
         - name: secrets
           secret:
-            secretName: {{ template "portus.fullname" . }}
+            secretName: {{ .Values.portus.tls.secretName }}
             items:
-              - key: key
+              - key: tls.key
                 path: portus.key
         - name: certificates
           secret:
-            secretName: {{ template "portus.fullname" . }}
+            secretName: {{ .Values.portus.tls.secretName }}
             items:
-              - key: cert
+              - key: tls.crt
                 path: portus.crt
         {{- else }}
         - name: secrets
