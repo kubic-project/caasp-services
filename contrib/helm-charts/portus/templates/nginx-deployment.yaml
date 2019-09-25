@@ -54,3 +54,7 @@ spec:
             items:
             - key: conf
               path: nginx.conf
+    {{- if .Values.nginx.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nginx.nodeSelector | indent 8 }}
+    {{- end }}

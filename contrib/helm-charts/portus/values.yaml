@@ -204,6 +204,8 @@ portus:
         memory: "512Mi"
         cpu: "300m"
 
+  nodeSelector: {}
+
 ## Default values for Docker Registry.
 ##
 registry:
@@ -236,6 +238,8 @@ registry:
     requests:
       memory: "512Mi"
       cpu: "300m"
+
+  nodeSelector: {}
 
 ## Default values for Nginx.
 ##
@@ -299,6 +303,8 @@ nginx:
     requests:
       memory: "512Mi"
       cpu: "300m"
+
+  nodeSelector: {}
 
 ## Default values for Mariadb.
 ##

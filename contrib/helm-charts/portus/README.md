@@ -113,6 +113,7 @@ The following tables lists the configurable parameters of the portus chart and t
 | `portus.background.enabled`                       | Run background Portus jobs                 | `true`                                          |
 | `portus.background.resources.requests.memory`     | Portus background process memory resources | `512Mi`                                         |
 | `portus.background.resources.requests.cpu`        | Portus background process cpu resources    | `300m`                                          |
+| `portus.nodeSelector`                             | Portus node labels for pod assignment      | `{}`                                            |
 | `registry.replicas`                               | Docker registry deployment replica count   | `1`                                             |
 | `registry.mountPath`                              | Path uploaded images are stored at         | `/storage`                                      |
 | `registry.persistence.enabled`                    | Docker registry use persistent storage     | `true`                                          |
@@ -125,6 +126,7 @@ The following tables lists the configurable parameters of the portus chart and t
 | `registry.service.debugPort`                      | Docker registry debug port                 | `5001`                                          |
 | `registry.resources.requests.memory`              | Registry deployment memory resources       | `512Mi`                                         |
 | `registry.resources.requests.cpu`                 | Registry deployment cpu resources          | `300m`                                          |
+| `registry.nodeSelector`                           | Registry node labels for pod assignment    | `{}`                                            |
 | `nginx.replicas`                                  | Nginx deployment replica count             | `1`                                             |
 | `nginx.image.repository`                          | Nginx image repository name                | `library/nginx`                                 |
 | `nginx.image.tag`                                 | Nginx image tag name                       | `alpine`                                        |
@@ -138,6 +140,7 @@ The following tables lists the configurable parameters of the portus chart and t
 | `nginx.ingress.tls.enabled`                       | Determines if ingress uses TLS             | `[]`                                            |
 | `nginx.resources.requests.memory`                 | Nginx deployment memory resources          | `512Mi`                                         |
 | `nginx.resources.requests.cpu`                    | Nginx deployment cpu resources             | `300m`                                          |
+| `nginx.nodeSelector`                              | Nginx node labels for pod assignment       | `{}`                                            |
 | `mariadb.enabled`                                 | Mariadb chart should be installed          | `true`                                          |
 | `mariadb.persistence.enabled`                     | Mariadb use persistent storage             | `false`                                         |
 | `mariadb.persistence.accessMode`                  | Mariadb persistence access mode            | `ReadWriteOnce`                                 |

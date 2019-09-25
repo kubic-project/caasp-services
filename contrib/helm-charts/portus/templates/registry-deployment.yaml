@@ -117,3 +117,7 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+    {{- if .Values.registry.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.registry.nodeSelector | indent 8 }}
+    {{- end }}

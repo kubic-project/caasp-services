@@ -198,3 +198,7 @@ spec:
             items:
               - key: config
                 path: etc/config-local.yml
+    {{- if .Values.portus.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.portus.nodeSelector | indent 8 }}
+    {{- end }}
