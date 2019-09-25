@@ -268,6 +268,8 @@ nginx:
     annotations:
     #   kubernetes.io/ingress.class: "nginx"
 
+    http2: true
+
   ## in order to access the docker registry from outside of the cluster
   ## if ingress is enabled set host to the domain you are using
   ## if NodePort is being used set host to the ip address of a cluster node
