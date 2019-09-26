@@ -200,23 +200,23 @@ data:
       #
       # See: https://github.com/SUSE/Portus/issues/510
       jwt_expiration_time:
-        value: 5
+        value: {{ .Values.portus.registry.jwt_expiration_time }}
 
       # Set the pagination value for API calls that fetch data from the
       # registry. You can read more about pagination in the registry here:
       #   https://github.com/docker/distribution/blob/master/docs/spec/api.md#pagination
       catalog_page:
-        value: 100
+        value: {{ .Values.portus.registry.catalog_page }}
 
       # Set the timeout in seconds for requests to the registry. Only change this
       # value if you are *really* sure that you have an exceptionally slow
       # connection to your private Docker registry.
       timeout:
-        value: 2
+        value: {{ .Values.portus.registry.timeout }}
 
       # Set timeout in seconds for read response from registry.
       read_timeout:
-        value: 120
+        value: {{ .Values.portus.registry.read_timeout }}
 
     # The FQDN of the machine where Portus is being deployed.
     machine_fqdn:

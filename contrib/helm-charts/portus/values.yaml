@@ -181,6 +181,13 @@ portus:
         server: "" #  support for this is experimental since this functionality has not been merged into master yet in zypper-docker
     anonymous_browsing: true # Allow anonymous (non-logged-in) users to explore the images available in your Docker Registry
 
+  ## Registry integration
+  registry:
+    jwt_expiration_time: 5
+    catalog_page: 100
+    timeout: 2
+    read_timeout: 120
+
   ## TLS configuration
   ## the internal host names of the portus, registry and nginx service must be covered by the key/cert in order for TLS to work properly
   ##

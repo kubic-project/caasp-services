@@ -113,6 +113,10 @@ The following tables lists the configurable parameters of the portus chart and t
 | `portus.background.enabled`                       | Run background Portus jobs                 | `true`                                          |
 | `portus.background.resources.requests.memory`     | Portus background process memory resources | `512Mi`                                         |
 | `portus.background.resources.requests.cpu`        | Portus background process cpu resources    | `300m`                                          |
+| `portus.registry.jwt_expiration_time`             | JWT Token expiration time (minutes)        | `5`                                             |
+| `portus.registry.catalog_page`                    | Pagination value for API calls to registry | `100`                                           |
+| `portus.registry.timeout`                         | Timeout (s) for requests to the registry   | `2`                                             |
+| `portus.registry.read_timeout`                    | Timeout (s) for read response from registry| `120`                                           |
 | `portus.nodeSelector`                             | Portus node labels for pod assignment      | `{}`                                            |
 | `registry.replicas`                               | Docker registry deployment replica count   | `1`                                             |
 | `registry.mountPath`                              | Path uploaded images are stored at         | `/storage`                                      |
