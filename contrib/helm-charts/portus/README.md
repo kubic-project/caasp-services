@@ -113,6 +113,11 @@ The following tables lists the configurable parameters of the portus chart and t
 | `portus.background.enabled`                       | Run background Portus jobs                 | `true`                                          |
 | `portus.background.resources.requests.memory`     | Portus background process memory resources | `512Mi`                                         |
 | `portus.background.resources.requests.cpu`        | Portus background process cpu resources    | `300m`                                          |
+| `portus.registry.jwt_expiration_time`             | JWT Token expiration time (minutes)        | `5`                                             |
+| `portus.registry.catalog_page`                    | Pagination value for API calls to registry | `100`                                           |
+| `portus.registry.timeout`                         | Timeout (s) for requests to the registry   | `2`                                             |
+| `portus.registry.read_timeout`                    | Timeout (s) for read response from registry| `120`                                           |
+| `portus.nodeSelector`                             | Portus node labels for pod assignment      | `{}`                                            |
 | `registry.replicas`                               | Docker registry deployment replica count   | `1`                                             |
 | `registry.mountPath`                              | Path uploaded images are stored at         | `/storage`                                      |
 | `registry.persistence.enabled`                    | Docker registry use persistent storage     | `true`                                          |
@@ -125,6 +130,7 @@ The following tables lists the configurable parameters of the portus chart and t
 | `registry.service.debugPort`                      | Docker registry debug port                 | `5001`                                          |
 | `registry.resources.requests.memory`              | Registry deployment memory resources       | `512Mi`                                         |
 | `registry.resources.requests.cpu`                 | Registry deployment cpu resources          | `300m`                                          |
+| `registry.nodeSelector`                           | Registry node labels for pod assignment    | `{}`                                            |
 | `nginx.replicas`                                  | Nginx deployment replica count             | `1`                                             |
 | `nginx.image.repository`                          | Nginx image repository name                | `library/nginx`                                 |
 | `nginx.image.tag`                                 | Nginx image tag name                       | `alpine`                                        |
@@ -138,12 +144,13 @@ The following tables lists the configurable parameters of the portus chart and t
 | `nginx.ingress.tls.enabled`                       | Determines if ingress uses TLS             | `[]`                                            |
 | `nginx.resources.requests.memory`                 | Nginx deployment memory resources          | `512Mi`                                         |
 | `nginx.resources.requests.cpu`                    | Nginx deployment cpu resources             | `300m`                                          |
+| `nginx.nodeSelector`                              | Nginx node labels for pod assignment       | `{}`                                            |
 | `mariadb.enabled`                                 | Mariadb chart should be installed          | `true`                                          |
 | `mariadb.persistence.enabled`                     | Mariadb use persistent storage             | `false`                                         |
 | `mariadb.persistence.accessMode`                  | Mariadb persistence access mode            | `ReadWriteOnce`                                 |
 | `mariadb.persistence.size`                        | Mariadb persistence capacity               | `8Gi`                                           |
-| `mariadb.mariadbUser`                             | Mariadb user account name                  | `portus`                                        |
-| `mariadb.mariadbDatabase`                         | Mariadb database name                      | `portus`                                        |
+| `mariadb.db.user`                                 | Mariadb user account name                  | `portus`                                        |
+| `mariadb.db.name`                                 | Mariadb database name                      | `portus`                                        |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 

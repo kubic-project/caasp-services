@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "registry.fullname" . }}
@@ -97,11 +97,11 @@ spec:
         {{- if .Values.portus.tls.enabled }}
         - name: certvol
           secret:
-            secretName: {{ template "portus.fullname" . }}
+            secretName: {{ .Values.portus.tls.secretName }}
             items:
-            - key: key
+            - key: tls.key
               path: portus.key
-            - key: cert
+            - key: tls.crt
               path: portus.crt
         {{- end }}
         - name: config
@@ -117,3 +117,7 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+    {{- if .Values.registry.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.registry.nodeSelector | indent 8 }}
+    {{- end }}

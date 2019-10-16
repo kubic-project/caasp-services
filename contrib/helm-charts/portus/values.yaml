@@ -181,6 +181,13 @@ portus:
         server: "" #  support for this is experimental since this functionality has not been merged into master yet in zypper-docker
     anonymous_browsing: true # Allow anonymous (non-logged-in) users to explore the images available in your Docker Registry
 
+  ## Registry integration
+  registry:
+    jwt_expiration_time: 5
+    catalog_page: 100
+    timeout: 2
+    read_timeout: 120
+
   ## TLS configuration
   ## the internal host names of the portus, registry and nginx service must be covered by the key/cert in order for TLS to work properly
   ##
@@ -203,6 +210,8 @@ portus:
       requests:
         memory: "512Mi"
         cpu: "300m"
+
+  nodeSelector: {}
 
 ## Default values for Docker Registry.
 ##
@@ -237,6 +246,8 @@ registry:
       memory: "512Mi"
       cpu: "300m"
 
+  nodeSelector: {}
+
 ## Default values for Nginx.
 ##
 nginx:
@@ -263,6 +274,8 @@ nginx:
     ##
     annotations:
     #   kubernetes.io/ingress.class: "nginx"
+
+    http2: true
 
   ## in order to access the docker registry from outside of the cluster
   ## if ingress is enabled set host to the domain you are using
@@ -300,6 +313,8 @@ nginx:
       memory: "512Mi"
       cpu: "300m"
 
+  nodeSelector: {}
+
 ## Default values for Mariadb.
 ##
 mariadb:
@@ -308,16 +323,32 @@ mariadb:
   ##
   enabled: true
 
-  ## persistence configuration.
-  ##
-  persistence:
-    enabled: false
-    # storageClass: "-"
-    accessMode: "ReadWriteOnce"
-    size: "8Gi"
-
   ## Configuration values for Mariadb.
   ## must match Portus database values.
   ##
-  mariadbUser: "portus"
-  mariadbDatabase: "portus"
+  db:
+    user: portus
+    name: portus
+
+  replication:
+    enabled: false # Development
+
+  master:
+    ## persistence configuration.
+    ##
+    persistence:
+      enabled: false
+      # storageClass: "-"
+      accessMode: "ReadWriteOnce"
+      size: "8Gi"
+    nodeSelector: {}
+
+  slave:
+    ## persistence configuration.
+    ##
+    persistence:
+      enabled: false
+      # storageClass: "-"
+      accessMode: "ReadWriteOnce"
+      size: "8Gi"
+    nodeselector: {}
